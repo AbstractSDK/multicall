@@ -33,20 +33,22 @@ overflow-checks = true
 [features]
 # use export feature to enable all instantiate/execute/query exports
 export = []
-#deploy = ["cw-orch/daemon"]
+default = ["export"]
 daemon-bin = ["cw-orch/daemon", "dotenv", "env_logger", "clap"]
 
 [[bin]]
 name = "deploy"
-path = "src/bin/deploy.rs"
 required-features = ["daemon-bin"]
+
+[[bin]]
+name = "schema"
 
 
 [package.metadata.scripts]
 optimize = """docker run --rm -v "$(pwd)":/code \
   --mount type=volume,source="$(basename "$(pwd)")_cache",target=/code/target \
   --mount type=volume,source=registry_cache,target=/usr/local/cargo/registry \
-  cosmwasm/rust-optimizer:0.12.7
+  cosmwasm/rust-optimizer:0.16.0
 """
 
 [dependencies]
@@ -60,7 +62,6 @@ cw-orch = { version = "0.27.0" }
 clap = { version = "4.5.20", features = ["derive"], optional = true }
 env_logger = {  version = "0.11.5", optional = true }
 dotenv = {  ersion = "0.15.0", optional = true }
-
 
 [dev-dependencies]
 cosmwasm-vm = { version = "2.0.0" }

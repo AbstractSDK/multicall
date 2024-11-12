@@ -12,9 +12,10 @@ impl<Chain> Uploadable for MulticallContract<Chain> {
     /// Return the path to the wasm file corresponding to the contract
     fn wasm(_chain: &ChainInfoOwned) -> WasmPath {
         artifacts_dir_from_workspace!()
-            .find_wasm_path("multicall_contract")
+            .find_wasm_path("multicall")
             .unwrap()
     }
+
     /// Returns a CosmWasm contract wrapper
     fn wrapper() -> Box<dyn MockContract<Empty>> {
         Box::new(

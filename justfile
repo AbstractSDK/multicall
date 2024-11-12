@@ -64,10 +64,10 @@ wasm:
 
 ## Exection commands ##
 
-run-script script name +CHAINS:
-  cargo run --bin {{script}} --package {{name}} --features="daemon-bin" -- --network-ids {{CHAINS}}
+run-script script +CHAINS:
+  cargo run --bin {{script}} --features="daemon-bin" -- --network-ids {{CHAINS}}
 
-deploy name +CHAINS:
+deploy +CHAINS:
   #!/usr/bin/env bash
   set -euxo pipefail
 
@@ -76,4 +76,4 @@ deploy name +CHAINS:
   else
     just wasm
   fi
-  just run-script deploy {{name}} {{CHAINS}}
+  just run-script deploy {{CHAINS}}

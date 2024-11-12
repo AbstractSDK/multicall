@@ -1,0 +1,10 @@
+{
+  "pion-1": {
+    "code_ids": {
+      "crates.io:multicall": 8062
+    },
+    "default": {
+      "crates.io:multicall": "neutron1j5tfd5vsw9kyjx4gllk6f20v536vt58syh3m0qfj7s6exgd60trsdn46ua"
+    }
+  }
+}
