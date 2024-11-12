@@ -8,3 +8,6 @@ mod test;
 
 #[cfg(test)]
 pub mod mock_querier;
+
+#[cfg(not(target_arch = "wasm32"))]
+pub mod interface;

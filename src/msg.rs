@@ -1,71 +1,81 @@
 use cosmwasm_std::{Addr, Binary};
-use serde::{Deserialize, Serialize};
+use cosmwasm_schema::{cw_serde, QueryResponses};
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
+#[cw_serde]
 pub struct InstantiateMsg {}
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
+#[cw_serde]
 pub struct MigrateMsg {}
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
-#[serde(rename_all = "snake_case")]
+#[cw_serde]
+#[derive(cw_orch::ExecuteFns)]
 pub enum ExecuteMsg {}
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
-#[serde(rename_all = "snake_case")]
+#[cw_serde]
+#[derive(cw_orch::QueryFns)] // Function generation
+#[derive(QueryResponses)]
 pub enum QueryMsg {
+    #[returns(cw2::ContractVersion)]
     ContractVersion {},
+    #[returns(AggregateResult)]
     Aggregate {
         queries: Vec<Call>,
     },
+    #[returns(AggregateResult)]
     TryAggregate {
         require_success: Option<bool>,
         include_cause: Option<bool>,
         queries: Vec<Call>,
     },
+    #[returns(AggregateResult)]
     TryAggregateOptional {
         include_cause: Option<bool>,
         queries: Vec<CallOptional>,
     },
+    #[returns(BlockAggregateResult)]
     BlockAggregate {
         queries: Vec<Call>,
     },
+    #[returns(BlockAggregateResult)]
     BlockTryAggregate {
         require_success: Option<bool>,
         include_cause: Option<bool>,
         queries: Vec<Call>,
     },
+    #[returns(BlockAggregateResult)]
     BlockTryAggregateOptional {
         include_cause: Option<bool>,
         queries: Vec<CallOptional>,
     },
 }
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
+#[cw_serde]
 pub struct Call {
     pub address: Addr,
     pub data: Binary,
 }
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
+#[cw_serde]
 pub struct CallOptional {
     pub require_success: bool,
     pub address: Addr,
     pub data: Binary,
 }
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq, Default)]
+
+#[derive(Default)]
+#[cw_serde]
 pub struct CallResult {
     pub success: bool,
     pub data: Binary,
 }
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
+#[cw_serde]
 pub struct AggregateResult {
     pub return_data: Vec<CallResult>,
 }
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
+#[cw_serde]
 pub struct BlockAggregateResult {
     pub block: u64,
     pub return_data: Vec<CallResult>,

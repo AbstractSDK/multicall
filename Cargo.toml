@@ -1,10 +1,12 @@
 [package]
 name = "multicall"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["SCB10x"]
 edition = "2021"
 repository = "https://github.com/scb-10x/multicall"
-description = "On-chain query aggregator/batcher in Terra"
+description = "On-chain query aggregator/batcher for CosmWasm"
+
+resolver = "2"
 
 exclude = [
   # Those files are rust-optimizer artifacts. You might want to commit them for convenience but they should not be part of the source code publication.
@@ -29,10 +31,16 @@ incremental = false
 overflow-checks = true
 
 [features]
-# for more explicit tests, cargo test --features=backtraces
-backtraces = ["cosmwasm-std/backtraces"]
-# use library feature to disable all instantiate/execute/query exports
-library = []
+# use export feature to enable all instantiate/execute/query exports
+export = []
+#deploy = ["cw-orch/daemon"]
+daemon-bin = ["cw-orch/daemon", "dotenv", "env_logger", "clap"]
+
+[[bin]]
+name = "deploy"
+path = "src/bin/deploy.rs"
+required-features = ["daemon-bin"]
+
 
 [package.metadata.scripts]
 optimize = """docker run --rm -v "$(pwd)":/code \
@@ -42,13 +50,20 @@ optimize = """docker run --rm -v "$(pwd)":/code \
 """
 
 [dependencies]
-cosmwasm-std = "1.0.0"
-cw2 = "0.14.0"
-serde = { version = "1.0.127", default-features = false, features = ["derive"] }
-thiserror = { version = "1.0.26" }
+cosmwasm-std = "2.0"
+cw2 = "2.0"
+cosmwasm-schema = "2.0"
+serde = { version = "1.0.103", default-features = false, features = ["derive"] }
+thiserror = { version = "1.0.63" }
+cw-orch = { version = "0.27.0" }
+
+clap = { version = "4.5.20", features = ["derive"], optional = true }
+env_logger = {  version = "0.11.5", optional = true }
+dotenv = {  ersion = "0.15.0", optional = true }
+
 
 [dev-dependencies]
-cosmwasm-vm = { version = "1.0.0" }
+cosmwasm-vm = { version = "2.0.0" }
 rand = "0.8.3"
 base64 = "0.13.0"
 test-case = "2.0.0"

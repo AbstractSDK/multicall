@@ -1,7 +1,4 @@
-use cosmwasm_std::{
-    to_binary, to_vec, Addr, Binary, ContractResult, Deps, Empty, Env, QuerierResult, QueryRequest,
-    StdResult, SystemResult, WasmQuery,
-};
+use cosmwasm_std::{Addr, Binary, ContractResult, Deps, Empty, Env, QuerierResult, QueryRequest, StdResult, SystemResult, to_json_binary, to_json_vec, WasmQuery};
 
 use crate::{
     error::{QueryError, QueryResult},
@@ -19,7 +16,7 @@ fn process_query_result(result: QuerierResult) -> QueryResult {
 }
 
 fn process_wasm_query(address: Addr, binary: Binary) -> StdResult<Vec<u8>> {
-    to_vec(&QueryRequest::<Empty>::Wasm(WasmQuery::Smart {
+    to_json_vec(&QueryRequest::<Empty>::Wasm(WasmQuery::Smart {
         contract_addr: address.to_string(),
         msg: binary,
     }))
@@ -114,7 +111,7 @@ pub fn try_aggregate(
                 false => match include_cause.unwrap_or(false) {
                     true => CallResult {
                         success: false,
-                        data: to_binary(&err.to_string())?,
+                        data: to_json_binary(&err.to_string())?,
                     },
                     false => CallResult {
                         success: false,
@@ -150,7 +147,7 @@ pub fn try_aggregate_optional(
                 false => match include_cause.unwrap_or(false) {
                     true => CallResult {
                         success: false,
-                        data: to_binary(&err.to_string())?,
+                        data: to_json_binary(&err.to_string())?,
                     },
                     false => CallResult {
                         success: false,

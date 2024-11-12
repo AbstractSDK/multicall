@@ -1,6 +1,5 @@
-#[cfg(not(feature = "library"))]
 use cosmwasm_std::{
-    entry_point, to_binary, Binary, Deps, DepsMut, Env, MessageInfo, Response, StdResult,
+    to_json_binary, Binary, Deps, DepsMut, Env, MessageInfo, Response, StdResult,
 };
 use cw2::{get_contract_version, set_contract_version};
 
@@ -14,10 +13,10 @@ use crate::{
 };
 
 // version info for migration info
-const CONTRACT_NAME: &str = "crates.io:multicall";
+pub const CONTRACT_NAME: &str = "crates.io:multicall";
 const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
 
-#[cfg_attr(not(feature = "library"), entry_point)]
+#[cfg_attr(feature = "export", cosmwasm_std::entry_point)]
 pub fn instantiate(
     deps: DepsMut,
     _env: Env,
@@ -28,7 +27,7 @@ pub fn instantiate(
     Ok(Response::new().add_attribute("method", "instantiate"))
 }
 
-#[cfg_attr(not(feature = "library"), entry_point)]
+#[cfg_attr(feature = "export", cosmwasm_std::entry_point)]
 pub fn execute(
     _deps: DepsMut,
     _env: Env,
@@ -38,22 +37,22 @@ pub fn execute(
     Err(ContractError::ExecuteNotSupported)
 }
 
-#[cfg_attr(not(feature = "library"), entry_point)]
+#[cfg_attr(feature = "export", cosmwasm_std::entry_point)]
 pub fn migrate(deps: DepsMut, _env: Env, _msg: MigrateMsg) -> Result<Response, ContractError> {
     set_contract_version(deps.storage, CONTRACT_NAME, CONTRACT_VERSION)?;
     Ok(Response::default())
 }
 
-#[cfg_attr(not(feature = "library"), entry_point)]
+#[cfg_attr(feature = "export", cosmwasm_std::entry_point)]
 pub fn query(deps: Deps, env: Env, msg: QueryMsg) -> StdResult<Binary> {
     match msg {
-        QueryMsg::ContractVersion {} => to_binary(&get_contract_version(deps.storage)?),
-        QueryMsg::Aggregate { queries } => to_binary(&aggregrate(deps, queries)?),
+        QueryMsg::ContractVersion {} => to_json_binary(&get_contract_version(deps.storage)?),
+        QueryMsg::Aggregate { queries } => to_json_binary(&aggregrate(deps, queries)?),
         QueryMsg::TryAggregate {
             require_success,
             include_cause,
             queries,
-        } => to_binary(&try_aggregate(
+        } => to_json_binary(&try_aggregate(
             deps,
             require_success,
             include_cause,
@@ -62,13 +61,13 @@ pub fn query(deps: Deps, env: Env, msg: QueryMsg) -> StdResult<Binary> {
         QueryMsg::TryAggregateOptional {
             include_cause,
             queries,
-        } => to_binary(&try_aggregate_optional(deps, include_cause, queries)?),
-        QueryMsg::BlockAggregate { queries } => to_binary(&block_aggregrate(deps, env, queries)?),
+        } => to_json_binary(&try_aggregate_optional(deps, include_cause, queries)?),
+        QueryMsg::BlockAggregate { queries } => to_json_binary(&block_aggregrate(deps, env, queries)?),
         QueryMsg::BlockTryAggregate {
             require_success,
             include_cause,
             queries,
-        } => to_binary(&block_try_aggregrate(
+        } => to_json_binary(&block_try_aggregrate(
             deps,
             env,
             require_success,
@@ -78,7 +77,7 @@ pub fn query(deps: Deps, env: Env, msg: QueryMsg) -> StdResult<Binary> {
         QueryMsg::BlockTryAggregateOptional {
             include_cause,
             queries,
-        } => to_binary(&block_try_aggregate_optional(
+        } => to_json_binary(&block_try_aggregate_optional(
             deps,
             env,
             include_cause,
