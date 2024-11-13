@@ -6,17 +6,7 @@ On-chain query aggregator/batcher in Terra.
 
 ----
 
-Mainnet (Phoenix) Code Id: `381`
-
-Mainnet Address: [`terra1g5puatcgawc58d95rflj9sxrl8wsted6n66yp6pndy69rc40k39snsefs3`](https://terrasco.pe/mainnet/address/terra1g5puatcgawc58d95rflj9sxrl8wsted6n66yp6pndy69rc40k39snsefs3)
-
-Testnet (Pisco) Code Id: `3616`
-
-Testnet Address: [`terra1s2crcfhahev6dclcv6wyeg3sd0c5nj3jrtv40nf0wpey6elk6pvqt2r562`](https://finder.terra.money/testnet/address/terra1s2crcfhahev6dclcv6wyeg3sd0c5nj3jrtv40nf0wpey6elk6pvqt2r562)
-
-Classic (Columbus) Code Id: `3758`
-
-Classic Address: [`terra1y60jx2jqh5qpmcnvgz3n0zg2p6ky4mr6ax2qa5`](https://finder.terra.money/classic/address/terra1y60jx2jqh5qpmcnvgz3n0zg2p6ky4mr6ax2qa5)
+Deployments can be found in [state.json](./state.json). To use this in a Typescript project, you can use `@abstract-money/cosmwasm-utils` package with the `MultiQueryCosmWasmClient` class ([source](https://github.com/AbstractSDK/abstract.js/blob/ceea3562c65d9a091913a088b5028b06f7232105/packages/cosmwasm-utils/src/client/MultiqueryCosmWasmClient.ts#L58)). This will take all smart-queries sent through the client and batch them to lessen the load on the RPC endpoints.
 
 ## Example Usage
 
