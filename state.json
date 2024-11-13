@@ -1,10 +1,34 @@
 {
+  "constantine-3": {
+    "code_ids": {
+      "crates.io:multiquery": 3926
+    },
+    "default": {
+      "crates.io:multiquery": "archway1ys09njg5mxsdkexcn84ay5vzwkkx4zp4utxc9gph9fmndqvcegks93yanp"
+    }
+  },
+  "osmo-test-5": {
+    "code_ids": {
+      "crates.io:multiquery": 11496
+    },
+    "default": {
+      "crates.io:multiquery": "osmo18cfv0tty0rw3r46pzp2a8r7d8g9fk5fyvszu22lfsclalfn9maqq23me2f"
+    }
+  },
   "pion-1": {
     "code_ids": {
       "crates.io:multiquery": 8062
     },
     "default": {
       "crates.io:multiquery": "neutron1j5tfd5vsw9kyjx4gllk6f20v536vt58syh3m0qfj7s6exgd60trsdn46ua"
+    }
+  },
+  "uni-6": {
+    "code_ids": {
+      "crates.io:multiquery": 4672
+    },
+    "default": {
+      "crates.io:multiquery": "juno15w8nejkrywzu6684nt7jgyljzfuwh3mpld3hsl5a482jg0l6vnhs02krnx"
     }
   },
   "xion-testnet-1": {
