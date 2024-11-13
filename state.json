@@ -6,5 +6,13 @@
     "default": {
       "crates.io:multicall": "neutron1j5tfd5vsw9kyjx4gllk6f20v536vt58syh3m0qfj7s6exgd60trsdn46ua"
     }
+  },
+  "xion-testnet-1": {
+    "code_ids": {
+      "crates.io:multicall": 1350
+    },
+    "default": {
+      "crates.io:multicall": "xion1enncc2l9h4njr32nsznns48vpvprwvmxpmqa764yc6usvjva3fkqugz73p"
+    }
   }
 }
