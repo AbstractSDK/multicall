@@ -1,9 +1,9 @@
 [package]
-name = "multicall"
+name = "multiquery"
 version = "0.2.0"
 authors = ["SCB10x"]
 edition = "2021"
-repository = "https://github.com/scb-10x/multicall"
+repository = "https://github.com/scb-10x/multiquery"
 description = "On-chain query aggregator/batcher for CosmWasm"
 
 resolver = "2"

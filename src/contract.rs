@@ -13,7 +13,7 @@ use crate::{
 };
 
 // version info for migration info
-pub const CONTRACT_NAME: &str = "crates.io:multicall";
+pub const CONTRACT_NAME: &str = "crates.io:multiquery";
 const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
 
 #[cfg_attr(feature = "export", cosmwasm_std::entry_point)]

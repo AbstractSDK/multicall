@@ -1,4 +1,4 @@
-# Multicall
+# Multiquery
 
 On-chain query aggregator/batcher in Terra.
 
@@ -27,7 +27,7 @@ Classic Address: [`terra1y60jx2jqh5qpmcnvgz3n0zg2p6ky4mr6ax2qa5`](https://finder
 Example Query: [Link](https://bombay-fcd.terra.dev/wasm/contracts/terra1z9p02s5fkasx5qxdaes6mfyf2gt3kxuhcsd4va/store?query_msg=%7B%22aggregate%22:%7B%22queries%22:%5B%7B%22address%22:%22terra15dwd5mj8v59wpj0wvt233mf5efdff808c5tkal%22,%22data%22:%22eyJjb25maWciOnt9fQ==%22%7D,%7B%22address%22:%22terra15dwd5mj8v59wpj0wvt233mf5efdff808c5tkal%22,%22data%22:%22eyJlcG9jaF9zdGF0ZSI6e319%22%7D%5D%7D%7D)
 
 ```ts
-const multicallRes: any = await terra.wasm.contractQuery(multicall, {
+const multicallRes: any = await terra.wasm.contractQuery(multiquery, {
   aggregate: {
     queries: [
       {
@@ -94,7 +94,7 @@ Aggregate with error suppression variant. If `include_cause` is `true`, `data` o
 Example Query: [Link](https://bombay-fcd.terra.dev/wasm/contracts/terra1z9p02s5fkasx5qxdaes6mfyf2gt3kxuhcsd4va/store?query_msg=%7B%22try_aggregate%22:%7B%22require_success%22:false,%22include_cause%22:true,%22queries%22:%5B%7B%22address%22:%22terra15dwd5mj8v59wpj0wvt233mf5efdff808c5tkal%22,%22data%22:%22eyJjb25maWciOnt9fQ==%22%7D,%7B%22address%22:%22terra15dwd5mj8v59wpj0wvt233mf5efdff808c5tkal%22,%22data%22:%22eyJlcG9jaF9zdGF0ZSI6e319%22%7D%5D%7D%7D)
 
 ```ts
-const multicallRes: any = await terra.wasm.contractQuery(multicall, {
+const multicallRes: any = await terra.wasm.contractQuery(multiquery, {
   try_aggregate: {
     require_success: false, // defualt to false
     include_cause: true, // default to false
@@ -125,7 +125,7 @@ Aggregate with specific error suppression variant. Same as `try_aggregate` but w
 Example Query: [Link](https://bombay-fcd.terra.dev/wasm/contracts/terra1z9p02s5fkasx5qxdaes6mfyf2gt3kxuhcsd4va/store?query_msg=%7B%22try_aggregate_optional%22:%7B%22include_cause%22:true,%22queries%22:%5B%7B%22require_success%22:true,%22address%22:%22terra15dwd5mj8v59wpj0wvt233mf5efdff808c5tkal%22,%22data%22:%22eyJjb25maWciOnt9fQ==%22%7D,%7B%22require_success%22:false,%22address%22:%22terra15dwd5mj8v59wpj0wvt233mf5efdff808c5tkal%22,%22data%22:%22eyJlcG9jaF9zdGF0ZSI6e319%22%7D%5D%7D%7D)
 
 ```ts
-const multicallRes: any = await terra.wasm.contractQuery(multicall, {
+const multicallRes: any = await terra.wasm.contractQuery(multiquery, {
   try_aggregate_optional: {
     include_cause: true, // default to false
     queries: []]]]
@@ -155,7 +155,7 @@ Include `block_` as prefix for query message to include block height as a result
 Example Query: [Link](https://bombay-fcd.terra.dev/wasm/contracts/terra1z9p02s5fkasx5qxdaes6mfyf2gt3kxuhcsd4va/store?query_msg=%7B%22block_aggregate%22:%7B%22queries%22:%5B%7B%22address%22:%22terra15dwd5mj8v59wpj0wvt233mf5efdff808c5tkal%22,%22data%22:%22eyJjb25maWciOnt9fQ==%22%7D,%7B%22address%22:%22terra15dwd5mj8v59wpj0wvt233mf5efdff808c5tkal%22,%22data%22:%22eyJlcG9jaF9zdGF0ZSI6e319%22%7D%5D%7D%7D)
 
 ```ts
-const multicallRes: any = await terra.wasm.contractQuery(multicall, {
+const multicallRes: any = await terra.wasm.contractQuery(multiquery, {
   block_aggregate: {
     queries: [
       {

@@ -1,5 +1,5 @@
 
-//! Publishes multicall to the chain.
+//! Publishes multiquery to the chain.
 //!
 //! Info: The mnemonic used to register the module must be the same as the owner of the account that claimed the namespace.
 //!
@@ -10,8 +10,8 @@
 //! ```
 use clap::Parser;
 use cw_orch::{anyhow, daemon::networks::parse_network, prelude::*, tokio::runtime::Runtime};
-use multicall::interface::MulticallContract;
-use multicall::msg::InstantiateMsg;
+use multiquery::interface::MulticallContract;
+use multiquery::msg::InstantiateMsg;
 
 fn deploy(networks: Vec<ChainInfo>) -> anyhow::Result<()> {
     // run for each requested network
@@ -22,10 +22,10 @@ fn deploy(networks: Vec<ChainInfo>) -> anyhow::Result<()> {
             .handle(rt.handle())
             .build()?;
 
-        let multicall = MulticallContract::new(chain);
+        let multiquery = MulticallContract::new(chain);
 
-        multicall.upload()?;
-        multicall.instantiate(&InstantiateMsg { }, None, &[])?;
+        multiquery.upload()?;
+        multiquery.instantiate(&InstantiateMsg { }, None, &[])?;
     }
     Ok(())
 }
