@@ -1,10 +1,34 @@
 {
+  "archway-1": {
+    "code_ids": {
+      "crates.io:multiquery": 759
+    },
+    "default": {
+      "crates.io:multiquery": "archway1xcz8mz6e8lyf5245d9scn8aj8n9sej3guetlnuwz47hfuxgl5zns7ryfa3"
+    }
+  },
   "constantine-3": {
     "code_ids": {
       "crates.io:multiquery": 3926
     },
     "default": {
       "crates.io:multiquery": "archway1ys09njg5mxsdkexcn84ay5vzwkkx4zp4utxc9gph9fmndqvcegks93yanp"
+    }
+  },
+  "juno-1": {
+    "code_ids": {
+      "crates.io:multiquery": 4605
+    },
+    "default": {
+      "crates.io:multiquery": "juno18v5wmgp4a7u6vntjg00dw7445fzxhqnm3w9wglz2ul5cce0lkvnq4gh043"
+    }
+  },
+  "neutron-1": {
+    "code_ids": {
+      "crates.io:multiquery": 2389
+    },
+    "default": {
+      "crates.io:multiquery": "neutron1s9cfh8tlhunskx2hj3kaq5whj7xgsescwhq2xazuwxwwqv4t2gds9540ud"
     }
   },
   "osmo-test-5": {
@@ -15,12 +39,36 @@
       "crates.io:multiquery": "osmo18cfv0tty0rw3r46pzp2a8r7d8g9fk5fyvszu22lfsclalfn9maqq23me2f"
     }
   },
+  "osmosis-1": {
+    "code_ids": {
+      "crates.io:multiquery": 1275
+    },
+    "default": {
+      "crates.io:multiquery": "osmo1gc2f3d3htaa7pwtw8wdxum50k5xny5fycqdevrmfl49654hszp0q77lpga"
+    }
+  },
+  "phoenix-1": {
+    "code_ids": {
+      "crates.io:multiquery": 3352
+    },
+    "default": {
+      "crates.io:multiquery": "terra1mh6wwpxq7vwnke8vmt6zdzlte3dp2c7skuwf96wgp6xtq0y2fjzsfuzkc2"
+    }
+  },
   "pion-1": {
     "code_ids": {
       "crates.io:multiquery": 8062
     },
     "default": {
       "crates.io:multiquery": "neutron1j5tfd5vsw9kyjx4gllk6f20v536vt58syh3m0qfj7s6exgd60trsdn46ua"
+    }
+  },
+  "pisco-1": {
+    "code_ids": {
+      "crates.io:multiquery": 14206
+    },
+    "default": {
+      "crates.io:multiquery": "terra1nmdt07ujjp4tt3vx5x33ann944u6luslnkr0rxj2uja9cv0e5p7s77t7za"
     }
   },
   "uni-6": {
